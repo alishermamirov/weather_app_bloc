@@ -61,16 +61,14 @@ class MainWeatherPart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       temp.toStringAsFixed(0),
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        // letterSpacing: -10,
-                        fontSize: 140,
+                        fontSize: 120,
                         color: Colors.white,
                       ),
                     ),
@@ -84,11 +82,13 @@ class MainWeatherPart extends StatelessWidget {
                         Text(
                           "°",
                           style: TextStyle(
-                            height: 2.5,
                             fontWeight: FontWeight.w700,
                             fontSize: 50,
                             color: Colors.white,
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Text(
                           main,
@@ -105,7 +105,7 @@ class MainWeatherPart extends StatelessWidget {
                 Text(
                   "Juma ${temp_max.toStringAsFixed(0)}°/${temp_min.toStringAsFixed(0)}°",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                     height: -1,
                     color: Colors.white,

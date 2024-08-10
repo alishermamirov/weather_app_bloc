@@ -21,12 +21,13 @@ class WeeklyWeatherListItem extends StatelessWidget {
       minLeadingWidth: 70,
       leading: Text(
         day,
-        style: const TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(
+            fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
       ),
       title: Row(
         children: [
           SizedBox(
-            width: 30,
+            width: 32,
             child: Image.asset(
               "assets/images/$icon.png",
               fit: BoxFit.cover,
@@ -34,13 +35,15 @@ class WeeklyWeatherListItem extends StatelessWidget {
           ),
           Text(
             main,
-            style: const TextStyle(fontSize: 16, color: Colors.white),
+            style: const TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
           ),
         ],
       ),
       trailing: Text(
         "${tempMax.toStringAsFixed(0)}°",
-        style: const TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(
+            fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
       ),
     );
   }

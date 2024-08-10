@@ -6,6 +6,7 @@ class WeatherModel {
   final String currentMain;
   final String currentDesc;
   final String currentIcon;
+  final double currentpressure;
   final double currentHumidity;
   final double currentVisibility;
   final double currentWindSpeed;
@@ -22,6 +23,7 @@ class WeatherModel {
     required this.currentMain,
     required this.currentDesc,
     required this.currentIcon,
+    required this.currentpressure,
     required this.currentHumidity,
     required this.currentVisibility,
     required this.currentWindSpeed,

@@ -66,6 +66,7 @@ class WeatherApiService {
           currentDesc: weatherData["description"].toString(),
           currentIcon: weatherData["icon"].toString(),
           currentHumidity: double.parse(maindData["humidity"].toString()),
+          currentpressure: double.parse(maindData["pressure"].toString()),
           currentVisibility: double.parse(data["visibility"].toString()),
           currentWindSpeed: double.parse(data["wind"]["speed"].toString()),
           currentTemp: double.parse(maindData["temp"].toString()),

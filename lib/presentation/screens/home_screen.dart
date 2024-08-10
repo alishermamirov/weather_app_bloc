@@ -15,8 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- 
-
   @override
   void initState() {
     super.initState();
@@ -81,18 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         )),
                   ],
                 ),
-                headerWidget: SizedBox(
-                  height: 300,
-                  child: MainWeatherPart(
-                 
-                    city: weather.city,
-                    main: weather.currentMain,
-                    temp: weather.currentTemp,
-                    temp_min: weather.currentTempFeelsLike,
-                    temp_max: weather.currentTempMax,
-                  ),
+                headerWidget: MainWeatherPart(
+                  city: weather.city,
+                  main: weather.currentMain,
+                  temp: weather.currentTemp,
+                  temp_min: weather.currentTempFeelsLike,
+                  temp_max: weather.currentTempMax,
                 ),
-                headerExpandedHeight: 0.58,
+                headerExpandedHeight: 0.5,
                 body: [
                   DailyWeatherPart(
                     hourWeather: weather.hourlyData,
@@ -100,7 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   WeeklyWeatherPart(
                     weather: weather.hourlyData,
                   ),
-                  WeatherInformationPart()
+                  WeatherInformationPart(
+                    weather: weather,
+                  )
                 ]),
           );
         } else {

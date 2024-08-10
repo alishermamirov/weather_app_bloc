@@ -15,7 +15,7 @@ class DailyWeatherItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 116,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -24,21 +24,20 @@ class DailyWeatherItem extends StatelessWidget {
           Text(
             time,
             style: const TextStyle(
-              fontSize: 14,
-              color: Colors.white,
-            ),
+                fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600),
           ),
           SizedBox(
             child: Image.asset(
               "assets/images/$icon.png",
-              width: 50,
-              height: 50,
+              width: 40,
+              height: 40,
               fit: BoxFit.cover,
             ),
           ),
           Text(
             "$temp°",
-            style: const TextStyle(fontSize: 16, color: Colors.white),
+            style: const TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
           ),
         ],
       ),
