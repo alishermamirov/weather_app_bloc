@@ -8,20 +8,23 @@ class WeatherInformationPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
-        3,
-        (index) {
-          return const Row(
-            children: [
-              InformationItem(),
-              SizedBox(
-                width: 8,
-              ),
-              InformationItem(),
-            ],
-          );
-        },
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      child: Column(
+        children: List.generate(
+          3,
+          (index) {
+            return const Row(
+              children: [
+                InformationItem(),
+                SizedBox(
+                  width: 8,
+                ),
+                InformationItem(),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

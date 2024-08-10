@@ -1,29 +1,51 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'package:my_weather/data/models/hourly_weather_model.dart';
 import 'package:my_weather/presentation/widgets/daily_weather_item.dart';
 
 class DailyWeatherPart extends StatelessWidget {
+  final List<HourlyWeatherModel> hourWeather;
+
   const DailyWeatherPart({
     super.key,
+    required this.hourWeather,
   });
+
+  List<HourlyWeatherModel> getw() {
+    return hourWeather.where((element) {
+      return DateFormat("yyyy MMMM dd").format(
+              DateTime.fromMillisecondsSinceEpoch(element.date * 1000)) ==
+          DateFormat("yyyy MMMM dd").format(DateTime.now());
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlurryContainer(
-      color: const Color.fromRGBO(27, 66, 99, 40),
-      borderRadius: BorderRadius.circular(24),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(
-            24,
-            (index) {
-              String time = index < 10 ? "0$index:00" : "$index:00";
-              return DailyWeatherItem(
-                time: time,
-                temp: "${index + 10}",
-              );
-            },
+    print("daily");
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      child: BlurryContainer(
+        color: const Color.fromRGBO(27, 66, 99, 40),
+        borderRadius: BorderRadius.circular(24),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: List.generate(
+              getw().length,
+              (index) {
+                final weather = hourWeather[index];
+                String time = DateFormat("HH:mm").format(
+                    DateTime.fromMillisecondsSinceEpoch(
+                        getw()[index].date * 1000));
+                return DailyWeatherItem(
+                  icon: weather.icon,
+                  time: time,
+                  temp: "${index + 10}",
+                );
+              },
+            ),
           ),
         ),
       ),
