@@ -4,7 +4,7 @@ part of 'weather_bloc.dart';
 sealed class WeatherEvent {}
 
 class getWeatherEvent extends WeatherEvent{
-  final String city;
+  final String? city;
 
-  getWeatherEvent({required this.city});
+  getWeatherEvent({ this.city});
 }

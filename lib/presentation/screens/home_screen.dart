@@ -1,7 +1,9 @@
 import 'package:draggable_home/draggable_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_weather/logic/bloc/weather/weather_bloc.dart';
+import 'package:my_weather/presentation/screens/city_manage_screen.dart';
 import 'package:my_weather/presentation/widgets/daily_weather_part.dart';
 import 'package:my_weather/presentation/widgets/main_weather_part.dart';
 import 'package:my_weather/presentation/widgets/weather_information_part.dart';
@@ -18,7 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(getWeatherEvent(city: "Jizzax"));
+    getdata();
+  }
+
+  void getdata() async {
+  
+    context.read<WeatherBloc>().add(getWeatherEvent(city:  "Jizzax"));
   }
 
   @override
@@ -43,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return const Center(child: CircularProgressIndicator());
         } else if (state is WeatherLoaded) {
           final weather = state.weather;
-          print("build");
+
           return Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -54,6 +61,27 @@ class _HomeScreenState extends State<HomeScreen> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: DraggableHome(
+                alwaysShowLeadingAndAction: true,
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      print("tap");
+                      Navigator.of(context)
+                          .pushNamed(CityManageScreen.routeName);
+                    },
+                    icon: const Icon(
+                      Icons.manage_search_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.more_vert,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
                 backgroundColor: Colors.transparent,
                 appBarColor: Colors.transparent,
                 title: AppBar(
@@ -63,21 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: const TextStyle(
                         fontWeight: FontWeight.w600, color: Colors.white),
                   ),
-                  backgroundColor: Colors.transparent.withOpacity(0.1),
-                  actions: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.more_vert,
-                          color: Colors.white,
-                        )),
-                  ],
+                  backgroundColor: Colors.transparent,
                 ),
                 headerWidget: MainWeatherPart(
                   city: weather.city,

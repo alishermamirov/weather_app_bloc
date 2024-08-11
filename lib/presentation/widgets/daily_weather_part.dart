@@ -14,33 +14,27 @@ class DailyWeatherPart extends StatelessWidget {
     required this.hourWeather,
   });
 
-  List<HourlyWeatherModel> getw() {
-    return hourWeather.where((element) {
-      return DateFormat("yyyy MMMM dd").format(
-              DateTime.fromMillisecondsSinceEpoch(element.date * 1000)) ==
-          DateFormat("yyyy MMMM dd").format(DateTime.now());
-    }).toList();
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    print("daily");
+
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: BlurryContainer(
         color: blurContainerColor,
         borderRadius: BorderRadius.circular(24),
-        padding: EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
-              getw().length,
+              7,
               (index) {
-                final weather = getw()[index];
+                final weather = hourWeather[index];
                 String time = DateFormat("HH:mm").format(
                     DateTime.fromMillisecondsSinceEpoch(
-                        getw()[index].date * 1000));
+                        hourWeather[index].date * 1000));
                 return DailyWeatherItem(
                   icon: weather.icon,
                   time: time,
